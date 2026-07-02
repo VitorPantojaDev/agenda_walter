@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>Walter</title>
+        <link rel='stylesheet' href='/static/css/style.css'>
+    </head>
+
+    <body>
+        <header> 
+            <!-- barra de navegação e seletor de visão -->
+             <div id="header-acoes-esquerda">
+                <button id="btn-menu-resumos">Resumos</button>
+            </div>
+
+            <div id="header-acoes-direita">
+                <button id="btn-menu-fundo">Plano de fundo</button>
+                <button id="btn-backup-header">Backup</button>
+            </div>
+            
+            <div id='controles-visao'>              
+                <div id='linha-visao'>
+                    <button class='btn-visao' data-visao='dia'>Dia</button>
+                    <button class='btn-visao ativo' data-visao='semana'>Semana</button>
+                    <button class='btn-visao' data-visao='mes'>Mês</button>
+                </div>
+                <div id='linha-navegacao'>
+                    <button id="btn-anterior">← Anterior</button>
+                    <span id="label-data"></span>
+                    <button id="btn-proximo">Próximo →</button>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div id='calendario'>
+                <!-- calendário dinâmico -->
+            </div>
+            <aside id='painel-lateral'>
+                <!-- tarefas e pagamentos -->                
+            </aside>
+        </main>
+        <div id='modal'>
+            <div id='modal-content'>
+                <h2 id='modal-titulo'>Novo Evento</h2>
+                <input type='text' id='campo-titulo' placeholder='Titulo'>
+                <input type='date' id='campo-data'>
+                <label style='display:flex;align-items:center;gap:8px;font-size:13px;color:var(--verde-floresta);margin-bottom:10px'>
+                    <input type='checkbox' id='campo-dia-inteiro' style='width:16px;height:16px;accent-color:var(--verde-floresta)'>
+                    Dia inteiro (sem horário)
+                </label>
+                <input type='time' id='campo-hora-inicio' placeholder='Início'>
+                <input type='time' id='campo-hora-fim' placeholder='Fim'>
+                <textarea id='campo-descricao' placeholder='Descrição'></textarea>
+                <input type='color' id='campo-cor' value='#4A7C59'>
+                <label style='display:flex;align-items:center;gap:8px;font-size:13px;color:var(--verde-floresta);margin-bottom:6px'>
+                    <input type='checkbox' id='campo-repetir' style='width:16px;height:16px;accent-color:var(--verde-floresta)'>
+                    Repetir evento
+                </label>
+                <div id='campos-repeticao' style='display:none;background:#F5F0E8;border-radius:8px;padding:12px;margin-bottom:10px'>
+                    <label style='font-size:12px;color:#6B7280;display:block;margin-bottom:4px'>Repetir a cada:</label>
+                    <select id='campo-frequencia' style='width:100%;padding:8px;border:1px solid #D4C9A8;border-radius:6px;margin-bottom:10px;font-size:13px'>
+                        <option value='diario'>Diariamente</option>
+                        <option value='semanal'>Semanalmente</option>
+                        <option value='mensal'>Mensalmente</option>
+                    </select>
+                    <label style='font-size:12px;color:#6B7280;display:block;margin-bottom:4px'>Repetir até:</label>
+                    <input type='date' id='campo-data-fim' style='width:100%;padding:8px;border:1px solid #D4C9A8;border-radius:6px;box-sizing:border-box;font-size:13px'>
+                </div>
+                <button id='btn-salvar'>Salvar</button>
+                <button id='btn-excluir'>Excluir</button>
+                <button id='btn-fechar'>Cancelar</button>
+            </div>
+        </div>
+        <script src='/static/js/app.js'></script>
+    </body>
+</html>

@@ -1,0 +1,375 @@
+/* ── VARIÁVEIS E BASE ─────────────────────────────── */
+:root {
+    --verde-floresta: #4A7C59;
+    --verde:   #2D5A27;   /* verde escuro */
+    --amarelo: #C17F24;   /* amarelo queimado */
+    --fundo:   #FAF9F6;   /* bege claríssimo (Off-White) */
+    --borda:   #E5E1D1;   /* bege acinzentado mais leve */
+    --destaque:#EAF2EA;   /* verde muito claro para hover */
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    background: var(--fundo);
+    background-size: 100% auto;
+    background-position: center 160px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* ── HEADER ───────────────────────────────────────── */
+header {
+    background: linear-gradient(135deg, var(--verde), var(--verde-floresta));
+    padding: 12px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+#controles-visao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+#linha-visao {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+}
+
+#linha-navegacao {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+#label-data {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin: 0 10px;
+    text-transform: capitalize;
+}
+
+.btn-visao {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.4);
+    padding: 6px 16px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#btn-anterior, #btn-proximo {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.4);
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+h2 { font-size: 28px; color: var(--verde); margin-bottom: 20px; }
+
+/* ── LAYOUT PRINCIPAL ─────────────────────────────── */
+main {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+}
+
+#calendario {
+    flex: 1;
+}
+
+#painel-lateral {
+    width: 280px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid var(--borda);
+}
+
+/* ── MODAL ────────────────────────────────────────── */
+#modal {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+#modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    width: 400px;
+    max-width: 90%;
+}
+
+#modal-content h2 {
+    margin-top: 0;
+    color: var(--verde-floresta);
+}
+
+#modal-content input,
+#modal-content textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+#btn-salvar {
+    background: var(--verde-floresta);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+}
+
+#btn-fechar {
+    background: transparent;
+    color: var(--verde-floresta);
+    border: 1px solid var(--borda);
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 6px;
+}
+
+#btn-excluir {
+    background: #FEE2E2;
+    color: #DC2626;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 6px;
+    display: none;
+}
+
+/* ── CALENDÁRIO ───────────────────────────────────── */
+.celula-hoje {
+    background: #EAF2EA !important;
+    border: 2px solid var(--verde-floresta) !important;
+    font-weight: bold;
+}
+
+/* ── PAINEL LATERAL ───────────────────────────────── */
+#painel-lateral h3 {
+    margin: 0 0 12px;
+    color: var(--verde);
+    font-size: 19px;
+    border-bottom: 2px solid var(--borda);
+    padding-bottom: 8px;
+}
+
+.tarefa-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(1px);
+    border: 1px solid var(--borda);
+    cursor: pointer;
+    transition: background 0.15s, opacity 0.15s;
+}
+
+.tarefa-item:hover { background: var(--destaque); }
+
+.tarefa-item.concluida {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+.tarefa-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--verde-floresta);
+    cursor: pointer;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.tarefa-prazo {
+    font-size: 13px;
+    color: #C17F24;
+    margin-top: 2px;
+}
+
+#btn-nova-tarefa {
+    width: 100%;
+    padding: 12px;
+    background: #4A7C59;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+#btn-nova-tarefa:hover { background: #2D5A27; }
+
+.tarefa-item[draggable="true"]:active {
+    cursor: grabbing;
+}
+
+.celula-dia {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(1px);
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* -- NOVAS CLASSES PARA LIMPEZA DO JS -- */
+.calendario-cabecalho-dia {
+    font-weight: bold;
+    font-size: 19px;
+    color: var(--verde);
+    text-transform: capitalize;
+}
+
+.tag-evento-calendario {
+    color: white;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 14px;
+    margin-top: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.btn-voltar {
+    background: transparent;
+    color: var(--verde-floresta);
+    border: 1px solid var(--verde-floresta);
+    border-radius: 6px;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.card-evento-dia {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(1px);
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.card-acoes {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+}
+
+.mini {
+    border: none;
+    border-radius: 4px;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+.btn-novo-evento-dia {
+    margin-top: 12px;
+    background: var(--verde-floresta);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+/* ==== SEÇÃO DE RESUMOS (dia/semana) ==== */
+.secao-resumos {
+    margin-top: 18px;
+    padding-top: 12px;
+    border-top: 2px solid var(--borda);
+}
+
+.secao-resumos h3 {
+    margin: 0 0 10px;
+    color: var(--verde);
+    font-size: 17px;
+}
+
+.btn-resumo {
+    width: 100%;
+    padding: 9px;
+    background: transparent;
+    color: var(--verde-floresta);
+    border: 1px solid var(--verde-floresta);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 6px;
+    text-align: left;
+}
+
+.btn-resumo:hover {
+    background: var(--destaque);
+}
+
+header {
+    position: relative;
+}
+
+#header-acoes-esquerda,
+#header-acoes-direita {
+    position: absolute;
+    top: 16px;
+    display: flex;
+    gap: 8px;
+}
+
+#header-acoes-esquerda {
+    left: 16px;
+}
+
+#header-acoes-direita {
+    right: 16px;
+}
+
+#header-acoes-esquerda button,
+#header-acoes-direita button {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.45);
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#header-acoes-esquerda button:hover,
+#header-acoes-direita button:hover {
+    background: rgba(255,255,255,0.12);
+}
