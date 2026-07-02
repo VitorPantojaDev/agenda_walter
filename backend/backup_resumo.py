@@ -6,7 +6,7 @@ import sqlite3
 import shutil
 from pathlib import Path
 from datetime import datetime, timedelta
-from utilitarios import gerar_imagem_resumo, enviar_email_com_anexos
+from backend.utilitarios import gerar_imagem_resumo, enviar_email_com_anexos
 
 load_dotenv()
 

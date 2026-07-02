@@ -5,7 +5,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from datetime import datetime, timedelta
 import json
-from utilitarios import gerar_imagem_resumo, enviar_email_com_anexo
+from backend.utilitarios import gerar_imagem_resumo, enviar_email_com_anexo
 import shutil
 
 load_dotenv()
