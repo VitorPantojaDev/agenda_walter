@@ -20,8 +20,11 @@ walter/
 - **Frontend**: JavaScript puro, HTML5 e CSS3.
 
 ## Como Executar
-Detailed instructions in INSTALL.md (manual run):
+
 1. `python -m venv venv`
-2. `source venv/bin/activate` (ou `venv\Scripts\activate` no Windows)
-3. `pip install -r requirements.txt`
-4. `python app.py`
+2. Renomear o arquivo .env.example para .env
+3. Colocar as respectivas credenciais no arquivo .env
+4. `source venv/bin/activate` (ou `venv\Scripts\activate` no Windows)
+5. `pip install -r requirements.txt`
+6. `python app.py`
+7. Acessar `http://localhost:5000`
