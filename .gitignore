@@ -1,0 +1,14 @@
+.env
+venv/
+__pycache__/
+*.pyc
+agenda.db
+backups/
+resumos/
+backup_resumo.log
+instance/
+.flaskenv
+*.png
+.DS_Store
+.vscode/
+static/images/Walter_fundo.JPG
